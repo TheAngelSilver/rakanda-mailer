@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 
-const promotions = [
+interface Promotion {
+  title: string;
+  description: string;
+}
+
+interface Event {
+  date: string;
+  location: string;
+  description: string;
+  cost: string;
+  type: string;
+}
+
+const promotions: Promotion[] = [
   {
     title: "Buy One, Get One Free!",
     description: "Celebrate sustainability with our seasonal blend offer.",
@@ -17,10 +30,28 @@ const promotions = [
   },
 ];
 
-const events = [
-  { date: "Jan 15, 2025", location: "Piedmont Park, Atlanta" },
-  { date: "Feb 10, 2025", location: "Midtown Coffee Festival" },
-  { date: "Mar 5, 2025", location: "Savannah Coffee Crawl" },
+const events: Event[] = [
+  {
+    date: "January 5, 2025",
+    location: "Caffeine & Octane",
+    description: "Network with car enthusiasts and enjoy premium coffee",
+    cost: "Low",
+    type: "Lifestyle",
+  },
+  {
+    date: "February 15, 2025",
+    location: "Coffee Lovers Run 5K/10K/13.1",
+    description: "Energy-boosting coffee samples for runners",
+    cost: "Medium",
+    type: "Fitness",
+  },
+  {
+    date: "March 9, 2025",
+    location: "Tucker Cruise-In",
+    description: "Special themed packaging and exclusive blends",
+    cost: "Low",
+    type: "Community",
+  },
 ];
 
 const Home = () => {
@@ -64,58 +95,43 @@ const Home = () => {
                   {promo.title}
                 </h4>
                 <p className="mt-3 text-base text-gray-400">
-                  const events = [
-                    {
-                      date: "January 5, 2025",
-                      location: "Caffeine & Octane",
-                      description: "Network with car enthusiasts and enjoy premium coffee",
-                      cost: "Low",
-                      type: "Lifestyle"
-                    },
-                    {
-                      date: "February 15, 2025",
-                      location: "Coffee Lovers Run 5K/10K/13.1",
-                      description: "Energy-boosting coffee samples for runners",
-                      cost: "Medium",
-                      type: "Fitness"
-                    },
-                    {
-                      date: "March 9, 2025",
-                      location: "Tucker Cruise-In",
-                      description: "Special themed packaging and exclusive blends",
-                      cost: "Low",
-                      type: "Community"
-                    }
-                  ]
+                  {promo.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                  <section className="py-16 bg-coffee-darker">
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                      <h3 className="text-3xl font-bold text-white text-center">
-                        Upcoming Events
-                      </h3>
-                      <p className="mt-4 text-lg text-gray-400 text-center max-w-3xl mx-auto">
-                        Experience Rakanda Gold Coffee firsthand. Meet us at these events
-                        and celebrate the journey from farm to cup.
-                      </p>
-                      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {events.map((event) => (
-                          <div key={event.date} 
-             className="bg-coffee-dark rounded-lg p-6 shadow-lg">
-                            <span className="text-coffee-light font-semibold block">
-                              {event.date}
-                            </span>
-                            <h4 className="text-xl text-white font-bold mt-2">
-                              {event.location}
-                            </h4>
-                            <p className="text-gray-400 mt-2">{event.description}</p>
-                            <div className="mt-4 text-sm text-gray-300">
-                              {event.type} | Cost: {event.cost}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </section>
+      {/* Events Section */}
+      <section className="py-16 bg-coffee-darker">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-3xl font-bold text-white text-center">
+            Upcoming Events
+          </h3>
+          <p className="mt-4 text-lg text-gray-400 text-center max-w-3xl mx-auto">
+            Experience Rakanda Gold Coffee firsthand. Meet us at these events
+            and celebrate the journey from farm to cup.
+          </p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {events.map((event) => (
+              <div
+                key={event.date}
+                className="bg-coffee-dark rounded-lg p-6 shadow-lg"
+              >
+                <span className="text-coffee-light font-semibold block">
+                  {event.date}
+                </span>
+                <h4 className="text-xl text-white font-bold mt-2">
+                  {event.location}
+                </h4>
+                <p className="text-gray-400 mt-2">{event.description}</p>
+                <div className="mt-4 text-sm text-gray-300">
+                  {event.type} | Cost: {event.cost}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>
